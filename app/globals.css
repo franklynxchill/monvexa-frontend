@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Tailwind v4 defaults `dark:` to prefers-color-scheme. This line makes
+   it respond to a `.dark` class on <html> instead, matching the JS
+   toggle in the Settings page (theme -> localStorage -> classList.toggle). */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #fafafa;
+  --foreground: #0f172a;
+  --primary: #2563EB;
+  --success: #16A34A;
+  --danger: #DC2626;
+  --warning: #F59E0B;
+  --surface: #FFFFFF;
+
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f8fafc;
+  --accent-foreground: #0f172a;
+  --destructive: #DC2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: transparent;
+  --input-background: #f8fafc;
+  --switch-background: #cbd5e1;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #2563EB;
+  --chart-1: #2563EB;
+  --chart-2: #16A34A;
+  --chart-3: #DC2626;
+  --chart-4: #F59E0B;
+  --chart-5: #8B5CF6;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #2563EB;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f8fafc;
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #2563EB;
+}
+
+/* Dark values live under .dark instead of a prefers-color-scheme media
+   query, so the JS toggle (not the OS setting) is the single source
+   of truth. */
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --surface: #1e293b;
+  --secondary: #1e293b;
+  --secondary-foreground: #f1f5f9;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f1f5f9;
+  --border: #334155;
+  --input-background: #1e293b;
+  --switch-background: #475569;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #334155;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-ring: var(--ring);
+
+  --font-geist: var(--font-geist);
+  --font-inter: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.content {
+  @apply px-4 md:px-12 pb-20 mt-6 mb-36 space-y-6 lg:absolute lg:top-20 lg:left-67.5 lg:w-[calc(100%-270px)];
+}
