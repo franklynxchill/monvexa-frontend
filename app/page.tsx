@@ -1,10 +1,5 @@
-import Siderbar from '@/component/Siderbar'
-import React from 'react'
+import { redirect } from "next/navigation";
 
-export default function page() {
-  return (
-    <div>
-      <Siderbar/>
-    </div>
-  )
+export default function Home() {
+  redirect("/login");
 }
