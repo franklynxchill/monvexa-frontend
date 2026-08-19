@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Header from "@/component/Header";
 import Navbar from "@/component/Navbar";
 import Siderbar from "@/component/Siderbar";
+import { useCurrency } from "@/context/CurrencyContext";
 
 import {
   ResponsiveContainer,
@@ -93,10 +94,6 @@ const RANGE_OPTIONS: { value: DateRange; label: string }[] = [
 
 const PIE_COLORS = ["#2563eb", "#16a34a", "#f59e0b", "#ef4444", "#8b5cf6"];
 
-function formatMoney(amount: number) {
-  return `₦${amount.toLocaleString()}`;
-}
-
 function changeClass(value: number) {
   return value >= 0 ? "text-green-600" : "text-red-500";
 }
@@ -131,6 +128,7 @@ export default function AnalyticsPage() {
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { formatMoney } = useCurrency();
 
   useEffect(() => {
     const fetchAnalytics = async () => {

@@ -5,6 +5,7 @@ import Header from "@/component/Header";
 import Siderbar from "@/component/Siderbar";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useCurrency } from "@/context/CurrencyContext";
 
 import { LuSearch } from "react-icons/lu";
 import {
@@ -43,6 +44,7 @@ export default function Page() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
+  const { formatMoney } = useCurrency();
 
   // ==================================
   // ICON MAP
@@ -277,7 +279,8 @@ export default function Page() {
               </p>
 
               <h2 className="text-xl font-bold mt-4 text-green-600">
-                +₦{totalIncome.toLocaleString()}
+                +
+                {formatMoney(totalIncome)}
               </h2>
             </div>
 
@@ -289,7 +292,7 @@ export default function Page() {
               </p>
 
               <h2 className="text-xl font-bold mt-4 text-red-500">
-                -₦{totalExpenses.toLocaleString()}
+                -{formatMoney(totalExpenses)}
               </h2>
             </div>
 
@@ -307,10 +310,7 @@ export default function Page() {
                     : "text-red-500"
                 }`}
               >
-                {netBalance >= 0 ? "+" : "-"}₦
-                {Math.abs(
-                  netBalance
-                ).toLocaleString()}
+                {`${netBalance >= 0 ? "+" : "-"}${formatMoney(Math.abs(netBalance))}`}
               </h2>
             </div>
           </div>
